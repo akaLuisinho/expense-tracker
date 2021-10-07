@@ -7,7 +7,7 @@ import { Category } from './types/Category'
 import { getCurrentMonth, filterListByMonth } from './helpers/dateFilter'
 import { TableArea } from './components/TableArea'
 import { InfoArea } from "./components/InfoArea"
-
+import { InsertArea } from "./components/InsertArea"
 
 
 export default function App() {
@@ -42,6 +42,13 @@ export default function App() {
     setCurrentMonth(newMonth)
   }
 
+  function handleAddItem(newItem: Item) {
+    let newList = [...list]
+    newList.push(newItem)
+    console.log(newList);
+    setList(newList)
+  }
+  
   return (
     <Container>
       <Header>
@@ -56,7 +63,9 @@ export default function App() {
         expense={expense}
         />
 
-        {/* { Área de inserção} */}
+        <InsertArea 
+          onAdd={handleAddItem}
+        />
 
         <TableArea list={filteredList}/>
 
