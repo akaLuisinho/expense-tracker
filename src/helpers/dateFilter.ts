@@ -22,10 +22,18 @@ export function filterListByMonth(list: Item[], date: string): Item[] {
 
 export function formatDate(date: Date): string {
     const year = date.getFullYear()
-    const month = date.getMonth()
+    const month = date.getMonth() + 1
     const day = date.getDate()
 
     return `${addZeroToDate(day)}/${addZeroToDate(month)}/${year}`
 }
 
-const addZeroToDate = (n: number):string => n < 10 ? `0${n} ` : `${n}`
+const addZeroToDate = (n: number):string => n < 10 ? `0${n}` : `${n}`
+
+export function formatCurrentMonth(currentMonth: string): string {
+    const [year, month] = currentMonth.split('-')
+    console.log(month);
+    const months = ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro']
+
+    return `${months[parseInt(month) - 1]} de ${year}`
+}
